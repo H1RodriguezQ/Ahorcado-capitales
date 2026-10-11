@@ -5,7 +5,7 @@ Segundo parcial de Lenguajes de Programación (UDES), con el profesor Carlos Car
 Es el juego del ahorcado, pero las palabras son las 32 capitales de los departamentos de Colombia. Antes de jugar se elige una región y un nivel. Si la capital está bien, se gana; si se completa el dibujo (o se acaba el tiempo en difícil), se pierde y el juego muestra la respuesta. La idea es repasar la geografía del país jugando.
 
 **Juego en línea: https://ahorcadocapitales.vercel.app/**
-**Video explicativo:** https://drive.google.com/file/d/1PTvR4bLN4q3Uqc-iGc1qL-gXwa46faTb/view?usp=sharing*
+**Video explicativo:**https://youtu.be/j06_79x-274**
 
 ## Capturas
 
