@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas · El Ahorcado</title>
+  <link rel="icon" href="../assets/img/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="../js/almacenamiento.js"></script>
+</head>
+<body data-pagina="estadisticas">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="barra">
+    <a class="marca" href="../index.html">
+      <img src="../assets/img/icono.svg" alt="" width="34" height="34">
+      <span>El Ahorcado</span>
+    </a>
+    <nav class="barra-nav" aria-label="Principal">
+      <a href="instrucciones.html">Instrucciones</a>
+      <a href="estadisticas.html" aria-current="page">Estadísticas</a>
+      <button id="btn-tema" class="btn-icono" type="button" aria-label="Cambiar tema claro u oscuro">
+        <svg class="icono-luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="icono-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    <div class="pagina-cabeza">
+      <p class="sobretitulo">Tu progreso</p>
+      <h1 class="titulo">Estadísticas</h1>
+      <p>Se guardan en este navegador, así que se conservan aunque recargues la página.</p>
+    </div>
+
+    <dl class="tarjetas-stats">
+      <div class="tarjeta stat stat-destacada"><dt>Jugadas</dt><dd id="stat-jugadas">0</dd></div>
+      <div class="tarjeta stat"><dt>Ganadas</dt><dd id="stat-ganadas">0</dd></div>
+      <div class="tarjeta stat"><dt>Perdidas</dt><dd id="stat-perdidas">0</dd></div>
+      <div class="tarjeta stat"><dt>% victorias</dt><dd id="stat-porcentaje">0%</dd></div>
+      <div class="tarjeta stat"><dt>Racha actual</dt><dd id="stat-racha">0</dd></div>
+      <div class="tarjeta stat"><dt>Mejor racha</dt><dd id="stat-mejor-racha">0</dd></div>
+    </dl>
+
+    <section class="tarjeta bloque recorrido-destacado">
+      <h2>Mejor recorrido · modo progresivo</h2>
+      <p id="mejor-recorrido"></p>
+    </section>
+
+    <div class="bloques">
+      <section class="tarjeta bloque">
+        <h2>Ranking · mejores puntajes</h2>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <thead><tr><th>#</th><th>Jugador</th><th>Nivel</th><th class="num">Puntos</th><th class="opcional">Fecha</th></tr></thead>
+            <tbody id="tabla-ranking"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tarjeta bloque">
+        <h2>Últimas partidas</h2>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <thead><tr><th>Capital</th><th>Nivel</th><th>Resultado</th><th class="num">Puntos</th><th class="opcional">Jugador</th></tr></thead>
+            <tbody id="tabla-historial"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="pie-acciones">
+      <a class="btn btn-primario" href="../index.html">Volver a jugar</a>
+      <button id="btn-borrar" class="btn btn-secundario" type="button">Borrar estadísticas</button>
+    </div>
+  </main>
+
+  <script src="../js/palabras.js"></script>
+  <script src="../js/juego.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

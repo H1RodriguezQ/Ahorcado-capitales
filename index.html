@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Ahorcado · Capitales de Colombia</title>
+  <meta name="description" content="Juego del ahorcado para aprender las 32 capitales de los departamentos de Colombia.">
+  <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/almacenamiento.js"></script>
+</head>
+<body data-pagina="juego">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="barra">
+    <a class="marca" href="index.html">
+      <img src="assets/img/icono.svg" alt="" width="34" height="34">
+      <span>El Ahorcado</span>
+    </a>
+    <nav class="barra-nav" aria-label="Principal">
+      <a href="pages/instrucciones.html">Instrucciones</a>
+      <a href="pages/estadisticas.html">Estadísticas</a>
+      <button id="btn-musica" class="btn-icono" type="button" aria-pressed="true" aria-label="Música">
+        <svg class="icono-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17V5l11-2v12" fill="none"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/></svg>
+        <svg class="icono-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17V5l11-2v12" fill="none"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M3 3l18 18" fill="none"/></svg>
+      </button>
+      <button id="btn-sonido" class="btn-icono" type="button" aria-pressed="true" aria-label="Sonido">
+        <svg class="icono-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg>
+        <svg class="icono-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg>
+      </button>
+      <button id="btn-tema" class="btn-icono" type="button" aria-label="Cambiar tema claro u oscuro">
+        <svg class="icono-luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="icono-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="contenedor">
+
+    <!-- ===== Menú principal ===== -->
+    <section id="pantalla-menu" class="pantalla" aria-labelledby="titulo-menu">
+      <div class="menu-intro">
+        <p class="sobretitulo">Geografía de Colombia</p>
+        <h1 id="titulo-menu" class="titulo">El Ahorcado <span>de las capitales</span></h1>
+        <p class="entrada">Adivina la capital antes de que se complete el dibujo. Son 32 capitales repartidas en seis regiones, con tres niveles de dificultad.</p>
+
+        <dl class="resumen" id="resumen-menu">
+          <div><dt>Jugadas</dt><dd id="resumen-jugadas">0</dd></div>
+          <div><dt>Ganadas</dt><dd id="resumen-ganadas">0</dd></div>
+          <div><dt>Mejor racha</dt><dd id="resumen-racha">0</dd></div>
+        </dl>
+      </div>
+
+      <form id="form-menu" class="tarjeta menu-form" novalidate>
+        <div class="campo">
+          <label for="nombre">Tu nombre</label>
+          <input id="nombre" name="nombre" type="text" maxlength="20" autocomplete="nickname" placeholder="Ej. Henry" required>
+          <p id="error-nombre" class="error-campo" hidden>Escribe tu nombre para empezar.</p>
+        </div>
+
+        <fieldset class="campo">
+          <legend>Modo de juego</legend>
+          <div class="modos">
+            <label class="modo">
+              <input type="radio" name="modo" value="libre" id="modo-libre" checked>
+              <span class="modo-cuerpo"><b>Partida libre</b><small>Eliges el nivel y juegas una capital.</small></span>
+            </label>
+            <label class="modo">
+              <input type="radio" name="modo" value="progresivo" id="modo-progresivo">
+              <span class="modo-cuerpo"><b>Modo progresivo</b><small>Empiezas en Fácil y subes cada 3 capitales, siempre contra el reloj. Sigues hasta perder.</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="campo">
+          <legend>Región</legend>
+          <div id="opciones-region" class="chips"></div>
+        </fieldset>
+
+        <fieldset class="campo" id="campo-nivel">
+          <legend>Nivel</legend>
+          <div id="opciones-nivel" class="niveles"></div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primario btn-grande">Jugar</button>
+
+        <div class="menu-enlaces">
+          <a class="btn btn-secundario" href="pages/instrucciones.html">Instrucciones</a>
+          <a class="btn btn-secundario" href="pages/estadisticas.html">Estadísticas</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== Pantalla de juego ===== -->
+    <section id="pantalla-juego" class="pantalla" aria-labelledby="titulo-juego" hidden>
+      <h1 id="titulo-juego" class="sr-only">Partida en curso</h1>
+
+      <div class="juego">
+        <div class="tarjeta lienzo">
+          <svg id="ahorcado" viewBox="0 0 200 240" role="img" aria-label="Dibujo del ahorcado">
+            <g class="horca">
+              <line x1="16" y1="226" x2="150" y2="226"/>
+              <line x1="48" y1="226" x2="48" y2="18"/>
+              <line x1="48" y1="18" x2="140" y2="18"/>
+              <line x1="48" y1="54" x2="84" y2="18"/>
+              <line class="cuerda" x1="140" y1="18" x2="140" y2="46"/>
+            </g>
+            <g class="partes">
+              <circle class="parte" data-parte="1" cx="140" cy="66" r="20" pathLength="1"/>
+              <line class="parte" data-parte="2" x1="140" y1="86" x2="140" y2="150" pathLength="1"/>
+              <line class="parte" data-parte="3" x1="140" y1="104" x2="114" y2="132" pathLength="1"/>
+              <line class="parte" data-parte="4" x1="140" y1="104" x2="166" y2="132" pathLength="1"/>
+              <line class="parte" data-parte="5" x1="140" y1="150" x2="118" y2="192" pathLength="1"/>
+              <line class="parte" data-parte="6" x1="140" y1="150" x2="162" y2="192" pathLength="1"/>
+            </g>
+            <g class="cara">
+              <path d="M129 58l7 7M136 58l-7 7M144 58l7 7M151 58l-7 7"/>
+              <path d="M132 77q8 -6 16 0"/>
+            </g>
+          </svg>
+          <p class="lienzo-pie"><span id="errores-texto">0</span> de 6 errores</p>
+        </div>
+
+        <div class="panel">
+          <ul class="etiquetas" aria-label="Datos de la partida">
+            <li id="info-jugador"></li>
+            <li id="info-region"></li>
+            <li id="info-nivel"></li>
+            <li id="info-ronda" class="etiqueta-ronda" hidden></li>
+          </ul>
+
+          <dl class="marcador">
+            <div>
+              <dt>Vidas</dt>
+              <dd id="vidas" class="vidas" aria-label="6 vidas"></dd>
+            </div>
+            <div>
+              <dt>Puntaje</dt>
+              <dd id="puntaje">0</dd>
+            </div>
+            <div>
+              <dt>Tiempo</dt>
+              <dd id="tiempo">Sin límite</dd>
+            </div>
+          </dl>
+
+          <div class="palabra-zona">
+            <div id="palabra" class="palabra"></div>
+            <p class="dato"><span class="dato-etiqueta">Dato</span> <span id="dato-texto"></span></p>
+          </div>
+
+          <div class="pistas">
+            <button id="btn-pista" class="btn btn-secundario" type="button">Pedir pista</button>
+            <p id="texto-pista" class="texto-pista"></p>
+          </div>
+
+          <p class="falladas">Letras falladas: <span id="letras-falladas">ninguna</span></p>
+          <p id="aviso" class="aviso" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div id="teclado" class="teclado" role="group" aria-label="Teclado virtual"></div>
+
+      <div class="acciones-juego">
+        <button id="btn-abandonar" class="btn btn-texto" type="button">← Volver al menú</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Ventana de resultado ===== -->
+  <dialog id="modal-resultado" class="modal" aria-labelledby="modal-titulo">
+    <p id="modal-etiqueta" class="modal-etiqueta"></p>
+    <h2 id="modal-titulo" class="modal-titulo"></h2>
+    <p id="modal-palabra" class="modal-palabra"></p>
+    <p id="modal-dato" class="modal-dato"></p>
+    <p id="modal-extra" class="modal-extra" hidden></p>
+    <table id="modal-desglose" class="desglose"></table>
+    <div class="modal-acciones">
+      <button id="btn-otra" class="btn btn-primario" type="button">Jugar otra vez</button>
+      <button id="btn-menu" class="btn btn-secundario" type="button">Volver al menú</button>
+    </div>
+  </dialog>
+
+  <script src="js/palabras.js"></script>
+  <script src="js/juego.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

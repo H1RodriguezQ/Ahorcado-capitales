@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrucciones · El Ahorcado</title>
+  <link rel="icon" href="../assets/img/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="../js/almacenamiento.js"></script>
+</head>
+<body data-pagina="instrucciones">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="barra">
+    <a class="marca" href="../index.html">
+      <img src="../assets/img/icono.svg" alt="" width="34" height="34">
+      <span>El Ahorcado</span>
+    </a>
+    <nav class="barra-nav" aria-label="Principal">
+      <a href="instrucciones.html" aria-current="page">Instrucciones</a>
+      <a href="estadisticas.html">Estadísticas</a>
+      <button id="btn-tema" class="btn-icono" type="button" aria-label="Cambiar tema claro u oscuro">
+        <svg class="icono-luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="icono-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    <div class="pagina-cabeza">
+      <p class="sobretitulo">Antes de jugar</p>
+      <h1 class="titulo">Instrucciones</h1>
+      <p>El objetivo es adivinar la capital de un departamento de Colombia, letra por letra, antes de que se complete el dibujo del ahorcado.</p>
+    </div>
+
+    <div class="bloques">
+      <section class="tarjeta bloque">
+        <h2>Cómo se juega</h2>
+        <ol>
+          <li>Escribe tu nombre y elige una región (o todo el país) y un nivel.</li>
+          <li>La capital aparece oculta con un guion por letra. Si tiene varias palabras, como Santa Marta, los espacios se ven desde el inicio.</li>
+          <li>Elige letras con el teclado de la pantalla o con el de tu computador. Cada letra se puede usar una sola vez.</li>
+          <li>Si aciertas, la letra aparece en todas sus posiciones. Si fallas, se dibuja una parte del ahorcado.</li>
+          <li>Ganas si completas la palabra antes de cometer 6 errores. En nivel difícil también pierdes si se acaba el tiempo.</li>
+          <li>Las tildes no cuentan: escribir <span class="kbd">O</span> revela la Ó de Quibdó. La <span class="kbd">Ñ</span> sí es una letra aparte.</li>
+          <li>Debajo de la palabra aparece un dato de la capital para orientarte desde el inicio.</li>
+        </ol>
+      </section>
+
+      <section class="tarjeta bloque">
+        <h2>Pistas</h2>
+        <ul>
+          <li>La primera pista muestra el departamento de la capital.</li>
+          <li>La segunda pista (solo en Fácil) revela una letra al azar.</li>
+          <li>Cada pista cuesta 15 puntos.</li>
+        </ul>
+        <h2 style="margin-top:22px">Teclado</h2>
+        <ul>
+          <li>Puedes escribir directamente con las teclas <span class="kbd">A</span> a <span class="kbd">Z</span> y <span class="kbd">Ñ</span>.</li>
+          <li>Las letras que ya usaste quedan bloqueadas: en verde si estaban y en rojo si no.</li>
+        </ul>
+      </section>
+
+      <section class="tarjeta bloque bloque-ancho">
+        <h2>Modo progresivo</h2>
+        <ul>
+          <li>Empiezas en Fácil y, cada 3 capitales que aciertas, subes al siguiente nivel: Medio y luego Difícil.</li>
+          <li>Todas las rondas tienen tiempo: 2:00 en Fácil, 1:40 en Medio y 1:30 en Difícil. Cuando quedan 15 segundos suena una música de tensión.</li>
+          <li>Las capitales no se repiten. Si un nivel se queda sin capitales, pasas al siguiente; cuando se acaban las difíciles, sigues con las que quedaron.</li>
+          <li>El puntaje de cada ronda se suma a un total. El recorrido termina cuando pierdes una ronda o cuando completas todas las capitales de la región.</li>
+          <li>Tu mejor recorrido queda guardado en Estadísticas.</li>
+        </ul>
+      </section>
+
+      <section class="tarjeta bloque">
+        <h2>Niveles</h2>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <thead><tr><th>Nivel</th><th>Longitud</th><th>Pistas</th><th>Tiempo</th><th>Mult.</th></tr></thead>
+            <tbody>
+              <tr><td>Fácil</td><td>4 a 6 letras</td><td>2</td><td>Sin límite</td><td>x1</td></tr>
+              <tr><td>Medio</td><td>7 a 9 letras</td><td>1</td><td>Sin límite</td><td>x2</td></tr>
+              <tr><td>Difícil</td><td>10 o más</td><td>0</td><td>90 s</td><td>x3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tarjeta bloque">
+        <h2>Puntuación</h2>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <thead><tr><th>Acción</th><th class="num">Puntos</th></tr></thead>
+            <tbody>
+              <tr><td>Letra correcta (por cada aparición)</td><td class="num">+10</td></tr>
+              <tr><td>Letra incorrecta</td><td class="num">−5</td></tr>
+              <tr><td>Usar una pista</td><td class="num">−15</td></tr>
+              <tr><td>Ganar la partida</td><td class="num">+50 + vidas × 10</td></tr>
+              <tr><td>Puntaje final</td><td class="num">subtotal × multiplicador</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tarjeta bloque bloque-ancho">
+        <h2>Las 32 capitales</h2>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <thead><tr><th>Capital</th><th>Departamento</th><th>Región</th><th class="num opcional">Letras</th><th>Nivel</th></tr></thead>
+            <tbody id="tabla-capitales"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="pie-acciones">
+      <a class="btn btn-primario" href="../index.html">Ir a jugar</a>
+    </div>
+  </main>
+
+  <script src="../js/palabras.js"></script>
+  <script src="../js/juego.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
