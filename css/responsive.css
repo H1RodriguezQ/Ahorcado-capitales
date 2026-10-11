@@ -1,0 +1,65 @@
+/*
+ * responsive.css
+ * Media queries para tabletas y celulares (mínimo 360 px sin scroll horizontal).
+ */
+
+@media (max-width: 960px) {
+  #pantalla-menu:not([hidden]) { grid-template-columns: 1fr; gap: 28px; padding-top: 4px; }
+  .entrada { max-width: 46ch; }
+  .tarjetas-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .barra { padding: 14px 16px; }
+  .contenedor { padding: 4px 16px 36px; }
+  .barra-nav a { display: none; }   /* en celular los enlaces están dentro del menú */
+
+  .juego { grid-template-columns: 1fr; gap: 14px; }
+  .lienzo { flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px; }
+  #ahorcado { width: 120px; flex-shrink: 0; max-height: 150px; }
+  .lienzo-pie { margin: 0; text-align: left; font-size: 1rem; }
+
+  .marcador > div { padding: 8px 10px; }
+  .marcador dd { font-size: 1.35rem; min-height: 1.6rem; }
+  .vidas { gap: 3px; flex-wrap: nowrap; }
+  .vida { width: 9px; height: 9px; flex-shrink: 0; }
+
+  .palabra-zona { padding: 20px 10px; min-height: 96px; }
+  .palabra { gap: 10px 16px; }
+  .palabra-grupo { gap: 4px; }
+  .casilla { width: 1.5rem; height: 2.5rem; font-size: 1.35rem; border-bottom-width: 3px; }
+
+  .teclado { gap: 5px; margin-top: 16px; }
+  .tecla { min-height: 46px; font-size: 1.05rem; border-radius: 9px; }
+
+  .bloques { grid-template-columns: 1fr; }
+  .tarjetas-stats { grid-template-columns: repeat(2, 1fr); }
+  .modal-palabra { font-size: 1.8rem; }
+}
+
+@media (max-width: 420px) {
+  .marca span { font-size: 1.15rem; }
+  .menu-form { padding: 20px 16px; }
+  .niveles { grid-template-columns: 1fr; }
+  .nivel-cuerpo { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+  .nivel-nombre { width: 100%; }
+  .nivel-cantidad { margin-top: 0; }
+  .menu-enlaces { grid-template-columns: 1fr; }
+  .modos { grid-template-columns: 1fr; }
+  .barra-nav { gap: 4px; }
+  .btn-icono { width: 38px; height: 38px; }
+  .marcador { gap: 6px; }
+  .marcador dt { font-size: .7rem; }
+  .teclado { gap: 4px; }
+  .tecla { min-height: 44px; padding: 0; }
+  /* Casillas más pequeñas para que quepan 13 letras seguidas (VILLAVICENCIO) en 360 px */
+  .palabra-grupo { gap: 3px; }
+  .casilla { width: 1.25rem; font-size: 1.15rem; }
+  .modal { padding: 24px 18px 20px; }
+  .modal-acciones { grid-template-columns: 1fr; }
+  .bloque { padding: 18px 14px; }
+  .tabla { font-size: .88rem; }
+  .tabla th, .tabla td { padding: 8px 6px; }
+  .opcional { display: none; }   /* columnas que sobran en pantallas pequeñas */
+  .stat dd { font-size: 1.7rem; }
+}
